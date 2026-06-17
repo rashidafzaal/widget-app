@@ -1,12 +1,26 @@
 import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Pressable } from 'react-native';
+import CounterModule from './modules/counter/src/CounterModule';
 
 export default function App() {
   const [count, setCount] = useState(0);
 
-  const increment = () => setCount((prev) => prev + 1);
-  const decrement = () => setCount((prev) => prev - 1);
+  useEffect(() => {
+    setCount(CounterModule.getCount());
+
+    const subscription = CounterModule.addListener(
+      'onCountChange',
+      (payload) => {
+        setCount(payload.count);
+      }
+    );
+
+    return () => subscription.remove();
+  }, []);
+
+  const increment = () => CounterModule.setCount(count + 1);
+  const decrement = () => CounterModule.setCount(count - 1);
 
   return (
     <View style={styles.container}>
