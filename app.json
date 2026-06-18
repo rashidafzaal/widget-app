@@ -8,7 +8,13 @@
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.rashidafzaal1718.WidgetApp"
+      "bundleIdentifier": "com.rashidafzaal1718.WidgetApp",
+      "appleTeamId": "PDMF5822BX",
+      "entitlements": {
+        "com.apple.security.application-groups": [
+          "group.com.rashidafzaal1718.widgetapp.counter"
+        ]
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -24,7 +30,8 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "./plugins/withAndroidWidget.js"
+      "./plugins/withAndroidWidget.js",
+      "@bacons/apple-targets"
     ]
   }
 }
