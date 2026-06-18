@@ -32,6 +32,27 @@
     "plugins": [
       "./plugins/withAndroidWidget.js",
       "@bacons/apple-targets"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "build": {
+          "experimental": {
+            "ios": {
+              "appExtensions": [
+                {
+                  "bundleIdentifier": "com.rashidafzaal1718.WidgetApp.widget",
+                  "targetName": "widget",
+                  "entitlements": {
+                    "com.apple.security.application-groups": [
+                      "group.com.rashidafzaal1718.widgetapp.counter"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
   }
 }
